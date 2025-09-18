@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Builds | YoruTouge Moto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A0E17',
+                        secondary: '#1A2436',
+                        accent: '#E63946',
+                        neon: '#38BDF8',
+                        darkgreen: '#133C38'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['"Rajdhani"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-glow {
+                text-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(56, 189, 248, 0.4);
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+            .image-hover {
+                transition: transform 0.7s ease, box-shadow 0.7s ease;
+            }
+            .image-hover:hover {
+                transform: translateY(-10px) scale(1.02);
+                box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.1), 0 10px 10px -5px rgba(56, 189, 248, 0.04);
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-primary text-white overflow-x-hidden font-sans">
+    <!-- Navigation (same as main page) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-primary/90 backdrop-blur shadow-lg border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center">
+                <span class="text-2xl font-display font-extrabold tracking-wider">
+                    YORU<span class="text-neon">TOUGE</span>
+                </span>
+                <span class="ml-2 text-sm text-gray-400 hidden md:inline-block">MOTO</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-neon transition-colors duration-300">Home</a>
+
+                <a href="index.html#performance" class="text-gray-300 hover:text-neon transition-colors duration-300">Performance</a>
+                <a href="Content.html" class="text-neon border-b-2 border-neon pb-1">Custom Builds</a>
+                <a href="About.html" class="text-gray-300 hover:text-neon transition-colors duration-300">About</a>
+
+                <a href="index.html#contact" class="text-gray-300 hover:text-neon transition-colors duration-300">Contact</a>
+                <a href="index.html#inquire" class="bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-5 py-2 rounded-full transition-all duration-300 font-medium">
+                    Race Ready
+                </a>
+            </div>
+
+            <button class="md:hidden text-gray-300 hover:text-neon" id="menuToggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden bg-secondary/95 backdrop-blur hidden absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Home</a>
+
+                <a href="index.html#performance" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Performance</a>
+                <a href="Content.html" class="text-neon">Custom Builds</a>
+                <a href="About.html" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">About</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Contact</a>
+                <a href="index.html#inquire" class="bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-5 py-3 rounded-full text-center transition-all duration-300 font-medium">
+                    Race Ready
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:py-40">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-4xl mx-auto">
+                <p class="text-neon font-display font-semibold mb-4 tracking-wider">PERSONALIZED PERFORMANCE</p>
+                <h1 class="text-[clamp(2.5rem,8vw,4.5rem)] font-display font-bold mb-6 text-glow">
+                    Custom <span class="text-neon">Builds</span>
+                </h1>
+                <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                    Each YoruTouge custom build is a masterpiece tailored to your riding style, combining cutting-edge performance with distinctive design that reflects your personality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Builds Gallery -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <!-- Build 1 -->
+            <div class="max-w-6xl mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-gradient-to-r from-darkgreen/20 to-neon/20 rounded-lg blur-3xl opacity-70"></div>
+                    <img 
+                        src="H2_Ninja_Green.png" 
+                        alt="Touge Warrior custom build with dark green matte finish" 
+                        class="relative z-10 rounded-lg shadow-2xl w-full h-auto image-hover"
+                    >
+                </div>
+                <div>
+                    <span class="text-xs bg-darkgreen/40 text-green px-3 py-1 rounded-full">OUR SIGNATURE BUILD</span>
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-display font-bold mt-4 mb-6">Touge Warrior</h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        The Touge Warrior is our tribute to the legendary mountain pass racing heritage. This build combines stealthy aesthetics with track-ready performance components designed specifically for tight corners and elevation changes.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Dark green matte finish with neon green accents</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Full Akrapovič racing exhaust system</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Öhlins fully adjustable suspension</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Carbon fiber front fender and fairing accents</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Custom ECU tune optimized for mountain passes</span>
+                        </div>
+                    </div>
+
+                    <a href="index.html#inquire" class="inline-block bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                        Inquire About This Build
+                    </a>
+                </div>
+            </div>
+
+            <!-- Build 2 -->
+            <div class="max-w-6xl mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <span class="text-xs bg-red-500/30 text-red-500 px-3 py-1 rounded-full">PERFORMANCE FOCUSED</span>
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-display font-bold mt-4 mb-6">Speed Demon</h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        For riders who crave straight-line speed and head-turning style, the Speed Demon features our most aggressive performance upgrades. This build is engineered to dominate both highway stretches and race circuits.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Gloss black base with crimson racing accents</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Upgraded turbocharger with 280HP output</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>High-performance intercooler system</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Titanium alloy frame components (weight reduction)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Track-focused braking system with carbon ceramic discs</span>
+                        </div>
+                    </div>
+
+                    <a href="index.html#inquire" class="inline-block bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                        Inquire About This Build
+                    </a>
+                </div>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute -inset-6 bg-gradient-to-r from-red-500/20 to-neon/20 rounded-lg blur-3xl opacity-70"></div>
+                    <img 
+                        src="H2_Ninja_Red.png" 
+                        alt="Speed Demon custom build with red accents" 
+                        class="relative z-10 rounded-lg shadow-2xl w-full h-auto image-hover"
+                    >
+                </div>
+            </div>
+
+            <!-- Build 3 -->
+            <div class="max-w-6xl mx-auto mb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-gradient-to-r from-blue-500/20 to-neon/20 rounded-lg blur-3xl opacity-70"></div>
+                    <img 
+                        src="H2_Ninja_Blue.png" 
+                        alt="Midnight Racer custom build with blue highlights" 
+                        class="relative z-10 rounded-lg shadow-2xl w-full h-auto image-hover"
+                    >
+                </div>
+                <div>
+                    <span class="text-xs bg-blue-500/30 text-blue-500 px-3 py-1 rounded-full">NIGHT OPTIMIZED</span>
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-display font-bold mt-4 mb-6">Midnight Racer</h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        The Midnight Racer is designed for riders who come alive after dark. This build combines stealthy aesthetics with specialized components that enhance visibility and performance during night rides.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Matte black with electric blue highlights</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>LED lighting package with 300% increased output</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Lightweight carbon fiber wheels (2.5kg reduction)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Performance clutch with quick-shifter upgrade</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Night-vision compatible instrument panel</span>
+                        </div>
+                    </div>
+
+                    <a href="index.html#inquire" class="inline-block bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                        Inquire About This Build
+                    </a>
+                </div>
+            </div>
+
+            <!-- Build 4 -->
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <span class="text-xs bg-neon/30 text-neon px-3 py-1 rounded-full">EXTREME PERFORMANCE</span>
+                    <h2 class="text-[clamp(1.8rem,5vw,2.5rem)] font-display font-bold mt-4 mb-6">Turbo King</h2>
+                    <p class="text-gray-300 mb-8 leading-relaxed">
+                        The Turbo King represents the pinnacle of our engineering capabilities. This limited-production build pushes the boundaries of what's possible with the Ninja H2 platform, delivering unprecedented power and performance.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Carbon fiber bodywork (full replacement)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Oversized turbocharger system (320HP output)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Custom racing exhaust with titanium headers</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Complete weight reduction program (-18kg)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fa fa-check text-neon mr-3"></i>
+                            <span>Fully adjustable race suspension with custom valving</span>
+                        </div>
+                    </div>
+
+                    <a href="index.html#inquire" class="inline-block bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                        Inquire About This Build
+                    </a>
+                </div>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute -inset-6 bg-gradient-to-r from-neon/30 to-darkgreen/20 rounded-lg blur-3xl opacity-70"></div>
+                    <img 
+                        src="Turbo.png" 
+                        alt="Turbo King custom build with upgraded turbo" 
+                        class="relative z-10 rounded-lg shadow-2xl w-full h-auto image-hover"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Build Process -->
+    <section class="py-20 bg-secondary/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-neon font-display font-semibold mb-4 tracking-wider">OUR PROCESS</p>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">
+                    Build Your <span class="text-neon">Dream Machine</span>
+                </h2>
+                <p class="text-gray-400">
+                    Our custom build process ensures your Ninja H2 is perfectly tailored to your riding style and aesthetic preferences.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6">
+                        <i class="fa fa-comments text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Consultation</h3>
+                    <p class="text-gray-400">We discuss your riding style, preferences, and performance goals to create your ideal build plan.</p>
+                </div>
+
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6">
+                        <i class="fa fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Design</h3>
+                    <p class="text-gray-400">Our design team creates custom visuals of your build, including color schemes and component selections.</p>
+                </div>
+
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6">
+                        <i class="fa fa-cogs text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Construction</h3>
+                    <p class="text-gray-400">Our master technicians build and install all components with precision engineering and attention to detail.</p>
+                </div>
+
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6">
+                        <i class="fa fa-flag-checkered text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Testing & Delivery</h3>
+                    <p class="text-gray-400">Each build undergoes rigorous testing before being carefully packaged and shipped to your location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-primary/80 backdrop-blur rounded-2xl overflow-hidden border border-gray-800 p-8 md:p-12 text-center">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">
+                    Ready to Build Your <span class="text-neon">Custom H2</span>?
+                </h2>
+                <p class="text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Start your custom build journey today. Our team will guide you through every step, creating a motorcycle that's as unique as your riding style.
+                </p>
+                <a href="index.html#inquire" class="inline-block bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                    Start Your Custom Build
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as main page) -->
+    <footer class="py-12 border-t border-gray-800 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <a href="index.html" class="text-2xl font-display font-extrabold tracking-wider mb-6 md:mb-0">
+                    YORU<span class="text-neon">TOUGE</span>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
+
+                    <a href="index.html#performance" class="text-gray-400 hover:text-neon transition-colors duration-300">Performance</a>
+                    <a href="Content.html" class="text-neon">Custom Builds</a>
+                    <a href="About.html" class="text-gray-300 hover:text-neon transition-colors duration-300">About</a>
+                    <a href="index.html#contact" class="text-gray-400 hover:text-neon transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-neon transition-colors duration-300">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>© 2023 YoruTouge Moto. All rights reserved.</p>
+                <p class="mt-2">Kawasaki Ninja H2 is a registered trademark of Kawasaki Heavy Industries, Ltd. YoruTouge Moto is an independent exporter.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

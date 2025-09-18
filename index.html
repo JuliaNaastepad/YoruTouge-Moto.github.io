@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YoruTouge Moto | Kawasaki Ninja H2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0A0E17', // Deep black
+                        secondary: '#1A2436', // Dark slate
+                        accent: '#E63946', // Racing red
+                        neon: '#38BDF8', // Cyan neon (like H2's signature color)
+                        darkgreen: '#133C38' // Ninja green
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['"Rajdhani"', 'sans-serif'] // More aggressive, sporty font
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+            }
+            .text-glow {
+                text-shadow: 0 0 12px rgba(56, 189, 248, 0.8), 0 0 24px rgba(56, 189, 248, 0.4);
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+            .clip-angle {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            }
+            .rotate-hover {
+                transition: transform 0.5s ease;
+            }
+            .rotate-hover:hover {
+                transform: rotate(-2deg) scale(1.02);
+            }
+            .engine-pulse {
+                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-primary text-white overflow-x-hidden font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="mainNav">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <span class="text-2xl font-display font-extrabold tracking-wider">
+                    YORU<span class="text-neon">TOUGE</span>
+                </span>
+                <span class="ml-2 text-sm text-gray-400 hidden md:inline-block">MOTO</span>
+            </a>
+
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-neon transition-colors duration-300">Home</a>
+                <a href="#performance" class="text-gray-300 hover:text-neon transition-colors duration-300">Performance</a>
+                <a href="Content.html" class="text-gray-300 hover:text-neon transition-colors duration-300">Custom Builds</a>
+                <a href="About.html" class="text-gray-300 hover:text-neon transition-colors duration-300">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-neon transition-colors duration-300">Contact</a>
+                <a href="#inquire" class="bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-5 py-2 rounded-full transition-all duration-300 font-medium">
+                    Race Ready
+                </a>
+            </div>
+
+            <button class="md:hidden text-gray-300 hover:text-neon" id="menuToggle">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden bg-secondary/95 backdrop-blur hidden absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Home</a>
+
+                <a href="#performance" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Performance</a>
+                <a href="Content.html" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Custom Builds</a>
+                <a href="About.html" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">About</a>
+                <a href="#contact" class="text-gray-300 hover:text-neon py-2 transition-colors duration-300">Contact</a>
+                <a href="#inquire" class="bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-5 py-3 rounded-full text-center transition-all duration-300 font-medium">
+                    Race Ready
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="relative h-screen overflow-hidden">
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary/70 z-10"></div>
+            <video 
+                src="Video.mp4" 
+                class="object-cover w-full h-full" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                poster="https://picsum.photos/id/1080/1920/1080"
+            ></video>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 h-full flex flex-col justify-center items-start px-4 md:px-12 max-w-6xl mx-auto">
+            <div class="max-w-2xl">
+                <p class="text-neon font-display font-semibold mb-2 tracking-wider animate-fade-in">THE ULTIMATE SPORTS MACHINE</p>
+                <h1 class="text-[clamp(2.8rem,8vw,5.5rem)] font-display font-extrabold leading-none mb-6 animate-fade-in text-glow">
+                    KAWASAKI<br>NINJA <span class="text-neon">H2</span>
+                </h1>
+                <p class="text-[clamp(1rem,3vw,1.25rem)] text-gray-300 mb-8 max-w-xl animate-slide-up">
+                    Turbocharged dominance. Precision engineering. The perfect fusion of raw power and surgical handling for the world's most demanding roads.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 animate-slide-up" style="animation-delay: 0.3s">
+                    <a href="#performance" class="bg-neon/20 hover:bg-neon/30 text-white px-8 py-3 rounded-full transition-all duration-300 font-medium flex items-center justify-center">
+                        <i class="fa fa-tachometer mr-2"></i> Explore Performance
+                    </a>
+                    <a href="#customizations" class="bg-transparent border border-neon text-neon hover:bg-neon/10 px-8 py-3 rounded-full transition-all duration-300 font-medium flex items-center justify-center">
+                        <i class="fa fa-wrench mr-2"></i> View Custom Builds
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-neon">
+                <i class="fa fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="order-2 lg:order-1">
+                        <p class="text-neon font-display font-semibold mb-4 tracking-wider">BEYOND ORDINARY</p>
+                        <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-8">
+                            Dominating the <span class="text-neon">Touge</span> After Dark
+                        </h2>
+
+                        <div class="space-y-6 text-gray-300">
+                            <p class="leading-relaxed">
+                                YoruTouge Moto specializes in the international export of Kawasaki's legendary Ninja H2 – a machine that redefines what a sports motorcycle can be. Born from racing heritage, built for ultimate performance.
+                            </p>
+                            <p class="leading-relaxed">
+                                When the sun sets and the mountain passes clear, the Ninja H2 comes alive. Its supercharged engine cuts through the silence – a sound that echoes off canyon walls and sends adrenaline coursing through your veins. The Ninja H2 is not just a motorcycle; it's a statement of intent, a testament to the rider's spirit.
+                            </p>
+                            <p class="leading-relaxed">
+                                We don't just export motorcycles – we deliver an experience. Each Ninja H2 we ship carries the spirit of the Touge: the danger, the precision, and the unmatched thrill of pushing both machine and rider to their limits.
+                                </p>
+                                <p class="leading-relaxed">
+                                    Yoru (Night) and  Touge (the famous mountain drive through Japan), as designed and delivered by Julia Naastepad, an H2 lover with an international business and engineering degree. "We make the H2 unique to the rider, as an extension of their personality; just like this business is mine."
+                            </p>
+                        </div>
+
+                        <div class="mt-10 flex items-center space-x-6">
+                            <div class="flex -space-x-2">
+                                <img src="https://picsum.photos/id/1012/100/100" alt="Rider" class="w-12 h-12 rounded-full border-2 border-primary">
+                                <img src="https://picsum.photos/id/1005/100/100" alt="Rider" class="w-12 h-12 rounded-full border-2 border-primary">
+                                <img src="https://picsum.photos/id/1074/100/100" alt="Rider" class="w-12 h-12 rounded-full border-2 border-primary">
+                            </div>
+                            <p class="text-gray-400 text-sm">Trusted by <span class="text-white font-medium">1,200+</span> performance enthusiasts worldwide</p>
+                        </div>
+                    </div>
+
+                    <div class="order-1 lg:order-2 relative">
+                        <div class="absolute -inset-6 bg-gradient-to-r from-neon/20 to-darkgreen/20 rounded-lg blur-3xl opacity-70"></div>
+                        <img 
+                            src="Image4.png" 
+                            alt="Kawasaki Ninja H2 on mountain road at night" 
+                            class="relative z-10 rounded-lg shadow-2xl w-full h-auto object-cover rotate-hover"
+                        >
+                        <div class="absolute -bottom-6 -left-6 bg-secondary p-4 rounded-lg border border-gray-700/50 shadow-xl z-20">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center text-neon engine-pulse">
+                                    <i class="fa fa-bolt text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400 text-sm">0-60 mph</p>
+                                    <p class="text-white font-bold">2.5 seconds</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="py-24 bg-secondary/30 relative clip-angle">
+        <div class="absolute inset-0 bg-[Image4.png] bg-cover bg-center opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-neon font-display font-semibold mb-4 tracking-wider">ENGINEERED FOR DOMINANCE</p>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">
+                    Performance That <span class="text-neon">Defies</span> Limits
+                </h2>
+                <p class="text-gray-400">
+                    The Kawasaki Ninja H2 isn't just a motorcycle – it's a masterpiece of engineering that brings race-level performance to the streets.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Performance Stat 1 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-dashboard text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">240+ HP</h3>
+                    <p class="text-gray-400 mb-4">Supercharged 998cc inline-four engine delivering extraordinary power with instant throttle response.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 95%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Race-level performance</p>
+                </div>
+
+                <!-- Performance Stat 2 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-tachometer text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">186+ MPH</h3>
+                    <p class="text-gray-400 mb-4">Top speed that puts the Ninja H2 in an elite class of production motorcycles.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Electronically limited</p>
+                </div>
+
+                <!-- Performance Stat 3 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-cogs text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">Advanced Aerodynamics</h3>
+                    <p class="text-gray-400 mb-4">Carbon fiber bodywork with wind-tunnel tested design for maximum stability at high speeds.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 85%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Track-inspired design</p>
+                </div>
+
+                <!-- Performance Stat 4 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-brake text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">High-Performance Brakes</h3>
+                    <p class="text-gray-400 mb-4">Brembo Stylema® calipers with dual 320mm discs for exceptional stopping power.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 92%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Race-proven components</p>
+                </div>
+
+                <!-- Performance Stat 5 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-sliders text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">Advanced Electronics</h3>
+                    <p class="text-gray-400 mb-4">Multiple riding modes, traction control, and quickshifter for precision handling in all conditions.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 88%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Customizable performance</p>
+                </div>
+
+                <!-- Performance Stat 6 -->
+                <div class="bg-primary/60 backdrop-blur rounded-xl p-8 border border-gray-800 hover:border-neon/50 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mb-6 group-hover:bg-neon/30 transition-colors">
+                        <i class="fa fa-road text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-display font-bold mb-2">Touge-Tuned Suspension</h3>
+                    <p class="text-gray-400 mb-4">Fully adjustable KYB suspension optimized for tight corners and mountain passes.</p>
+                    <div class="w-full bg-gray-800 rounded-full h-2 mb-1">
+                        <div class="bg-neon h-2 rounded-full" style="width: 90%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500">Precision handling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Bike Section -->
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div class="absolute -inset-8 bg-gradient-to-r from-darkgreen/20 to-neon/20 rounded-lg blur-3xl opacity-70"></div>
+                        <img 
+                            src="ImageGulf.png" 
+                            alt="Kawasaki Ninja H2 in black" 
+                            class="relative z-10 rounded-lg shadow-2xl w-full h-auto object-cover rotate-hover"
+                        >
+                    </div>
+
+                    <div>
+                        <p class="text-neon font-display font-semibold mb-4 tracking-wider">OUR SIGNATURE MODEL</p>
+                        <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">
+                            Ninja H2 <span class="text-neon">Yoru</span> Edition
+                        </h2>
+
+                        <p class="text-gray-300 mb-8 leading-relaxed">
+                            Our signature Yoru Edition Ninja H2 comes dressed in a Gulf-sponsored design that combines stealthy aesthetics with race-ready performance. This isn't just a color scheme – it's a legacy. The Gulf-sponsored Ninja H2 is a tribute to the race, the riders, and the spirit of the Touge.
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-neon/20 flex items-center justify-center text-neon mt-1 mr-4 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Exclusive Matte Black Finish</h3>
+                                    <p class="text-gray-400">Specialty paint that reduces glare during night rides while exuding menacing style.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-neon/20 flex items-center justify-center text-neon mt-1 mr-4 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Performance Exhaust System</h3>
+                                    <p class="text-gray-400">Upgraded exhaust that enhances that distinctive turbo sound while increasing horsepower.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 rounded-full bg-neon/20 flex items-center justify-center text-neon mt-1 mr-4 flex-shrink-0">
+                                    <i class="fa fa-check"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">Night-Optimized Lighting</h3>
+                                    <p class="text-gray-400">High-intensity LED headlight and auxiliary lighting for maximum visibility on dark mountain roads.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="#inquire" class="inline-block mt-10 bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon px-8 py-3 rounded-full transition-all duration-300 font-medium">
+                            Inquire About This Model
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customizations Section with Slider -->
+    <section id="customizations" class="py-24 bg-secondary/20 relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-neon font-display font-semibold mb-4 tracking-wider">PERSONALIZED PERFORMANCE</p>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">
+                    Signature <span class="text-neon">Custom Builds</span>
+                </h2>
+                <p class="text-gray-400">
+                    Each YoruTouge custom build is a reflection of its rider's spirit – combining raw performance with distinctive style.
+                </p>
+            </div>
+
+            <!-- Slider Container -->
+            <div class="relative max-w-6xl mx-auto">
+                <div class="overflow-hidden" id="customSlider">
+                    <div class="flex transition-transform duration-500 ease-out" id="sliderTrack">
+                        <!-- Custom Build 1 -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[25%] p-4">
+                            <div class="bg-primary/60 backdrop-blur rounded-xl overflow-hidden group h-full border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                                <div class="relative overflow-hidden">
+                                    <img 
+                                        src="H2_Ninja_Green.png" 
+                                        alt="Kawasaki Ninja H2 with custom green accents" 
+                                        class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2">Touge Warrior</h3>
+                                    <p class="text-gray-400 mb-4">Dark green matte finish with neon green accents, racing exhaust, and track-tuned suspension.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-darkgreen/40 text-green px-3 py-1 rounded-full">Racing Exhaust</span>
+                                        <span class="text-xs bg-darkgreen/40 text-green px-3 py-1 rounded-full">Suspension Upgrade</span>
+                                        <span class="text-xs bg-darkgreen/40 text-green px-3 py-1 rounded-full">Carbon Fiber</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Build 2 -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[25%] p-4">
+                            <div class="bg-primary/60 backdrop-blur rounded-xl overflow-hidden group h-full border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                                <div class="relative overflow-hidden">
+                                    <img 
+                                        src="H2_Ninja_Red.png" 
+                                        alt="Kawasaki Ninja H2 with custom red accents" 
+                                        class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2">Speed Demon</h3>
+                                    <p class="text-gray-400 mb-4">Gloss black base with crimson accents, upgraded turbo, and performance intercooler system.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-red-500/30 text-red-500 px-3 py-1 rounded-full">Turbo Upgrade</span>
+                                        <span class="text-xs bg-red-500/30 text-red-500 px-3 py-1 rounded-full">Intercooler</span>
+                                        <span class="text-xs bg-red-500/30 text-red-500 px-3 py-1 rounded-full">Titanium Parts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Build 3 -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[25%] p-4">
+                            <div class="bg-primary/60 backdrop-blur rounded-xl overflow-hidden group h-full border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                                <div class="relative overflow-hidden">
+                                    <img 
+                                        src="H2_Ninja_Blue.png" 
+                                        alt="Kawasaki Ninja H2 with custom blue accents" 
+                                        class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2">Midnight Racer</h3>
+                                    <p class="text-gray-400 mb-4">Matte black with electric blue highlights, lightweight components, and racing ECU tune.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-blue-500/30 text-blue-500 px-3 py-1 rounded-full">ECU Tune</span>
+                                        <span class="text-xs bg-blue-500/30 text-blue-500 px-3 py-1 rounded-full">Lightweight Wheels</span>
+                                        <span class="text-xs bg-blue-500/30 text-blue-500 px-3 py-1 rounded-full">Performance Clutch</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Build 4 -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[25%] p-4">
+                            <div class="bg-primary/60 backdrop-blur rounded-xl overflow-hidden group h-full border border-gray-800 hover:border-neon/50 transition-all duration-300">
+                                <div class="relative overflow-hidden">
+                                    <img 
+                                        src="Turbo.png" 
+                                        alt="Kawasaki Ninja H2 with upgraded turbo" 
+                                        class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-bold mb-2">Turbo King</h3>
+                                    <p class="text-gray-400 mb-4">Performance-focused build with oversized turbo, racing exhaust, and stripped-down bodywork.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-neon/30 text-neon px-3 py-1 rounded-full">Oversized Turbo</span>
+                                        <span class="text-xs bg-neon/30 text-neon px-3 py-1 rounded-full">Racing Exhaust</span>
+                                        <span class="text-xs bg-neon/30 text-neon px-3 py-1 rounded-full">Weight Reduction</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Controls -->
+                <button id="prevSlide" class="absolute top-1/2 left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/80 backdrop-blur flex items-center justify-center text-white hover:bg-neon/50 transition-colors z-10">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button id="nextSlide" class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-primary/80 backdrop-blur flex items-center justify-center text-white hover:bg-neon/50 transition-colors z-10">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+
+                <!-- Slider Indicators -->
+                <div class="flex justify-center mt-8 gap-2" id="sliderIndicators">
+                    <button class="w-3 h-3 rounded-full bg-neon opacity-100 transition-all"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-600 opacity-50 transition-all"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-600 opacity-50 transition-all"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-600 opacity-50 transition-all"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inquire Section -->
+    <section id="inquire" class="py-24 relative">
+        <div class="absolute inset-0 bg-[url('https://picsum.photos/id/1076/1920/1080')] bg-cover bg-center opacity-5"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto bg-primary/80 backdrop-blur rounded-2xl overflow-hidden border border-gray-800">
+                <div class="p-8 md:p-12">
+                    <p class="text-neon font-display font-semibold mb-4 tracking-wider text-center">READY TO RIDE</p>
+                    <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6 text-center">
+                        Get Your <span class="text-neon">Ninja H2</span>
+                    </h2>
+                    <p class="text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+                        Inquire about exporting a Kawasaki Ninja H2 or discuss your custom build requirements. Our team of performance specialists will respond within 24 hours.
+                    </p>
+
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-300 mb-2">Full Name</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    class="w-full bg-secondary/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon transition-colors"
+                                    placeholder="Your name"
+                                >
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-300 mb-2">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    class="w-full bg-secondary/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon transition-colors"
+                                    placeholder="Your email"
+                                >
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="country" class="block text-gray-300 mb-2">Country of Residence</label>
+                            <input 
+                                type="text" 
+                                id="country" 
+                                class="w-full bg-secondary/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon transition-colors"
+                                placeholder="Where will the motorcycle be registered?"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="interest" class="block text-gray-300 mb-2">I'm interested in</label>
+                            <select 
+                                id="interest" 
+                                class="w-full bg-secondary/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon transition-colors"
+                            >
+                                <option value="" selected disabled>Select an option</option>
+                                <option value="stock-black">Import stock</option>
+                                <option value="custom">Custom Build (Specify below)</option>
+                                <option value="performance">Performance Upgrades</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-gray-300 mb-2">Your Requirements</label>
+                            <textarea 
+                                id="message" 
+                                rows="4" 
+                                class="w-full bg-secondary/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon transition-colors"
+                                placeholder="Tell us about your performance needs and customization ideas..."
+                            ></textarea>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            class="w-full bg-neon/20 hover:bg-neon/30 border border-neon/50 text-neon py-4 rounded-lg font-medium transition-all duration-300 flex items-center justify-center"
+                        >
+                            Send Inquiry
+                            <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-secondary/30 relative">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <p class="text-neon font-display font-semibold mb-4 tracking-wider text-center">GET IN TOUCH</p>
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-12 text-center">
+                    Join the <span class="text-neon">YoruTouge</span> Family
+                </h2>
+                <!-- Founder Profile -->
+                <div class="flex flex-col items-center mb-12">
+                    <div class="w-36 h-36 rounded-full overflow-hidden border-4 border-neon/40 shadow-lg shadow-neon/10 mb-4 transition-transform hover:scale-105 duration-300">
+                        <img src="Image5.jpg" alt="Julia Naastepad - Founder of YoruTouge Moto" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white">Julia Naastepad</h3>
+                    <p class="text-neon mt-1">Founder & Head Tuner</p>
+                    <p class="text-gray-400 mt-3 max-w-md text-center">
+                        Passionate about Kawasaki engineering and the art of midnight touge riding.
+                        Let's build your perfect Ninja H2.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-primary/60 backdrop-blur rounded-xl p-8 text-center hover:border-neon/50 transition-all duration-300 border border-gray-800 group">
+                        <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mx-auto mb-6 group-hover:bg-neon/30 transition-colors">
+                            <i class="fa fa-envelope text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Email Us</h3>
+                        <p class="text-gray-400 mb-4">For inquiries about exports and custom builds</p>
+                        <a href="mailto:info@yorutouge.moto" class="text-neon hover:underline">info@yorutouge.moto</a>
+                    </div>
+
+                    <div class="bg-primary/60 backdrop-blur rounded-xl p-8 text-center hover:border-neon/50 transition-all duration-300 border border-gray-800 group">
+                        <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mx-auto mb-6 group-hover:bg-neon/30 transition-colors">
+                            <i class="fa fa-map-marker text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Visit Us</h3>
+                        <p class="text-gray-400 mb-4">Our Tokyo showroom and performance workshop</p>
+                        <p class="text-gray-300">123 Touge Street, Tokyo, Japan</p>
+                    </div>
+
+                    <div class="bg-primary/60 backdrop-blur rounded-xl p-8 text-center hover:border-neon/50 transition-all duration-300 border border-gray-800 group">
+                        <div class="w-14 h-14 rounded-full bg-neon/20 flex items-center justify-center text-neon mx-auto mb-6 group-hover:bg-neon/30 transition-colors">
+                            <i class="fa fa-phone text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Call Us</h3>
+                        <p class="text-gray-400 mb-4">Monday to Friday, 9am to 6pm JST</p>
+                        <a href="tel:+81312345678" class="text-neon hover:underline">+81 (3) 1234-5678</a>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <h3 class="text-xl font-bold mb-6">Follow Our Rides</h3>
+                    <div class="flex justify-center space-x-6">
+                        <a href="#" class="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-gray-400 hover:bg-neon/20 hover:text-neon transition-all duration-300">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-gray-400 hover:bg-neon/20 hover:text-neon transition-all duration-300">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-gray-400 hover:bg-neon/20 hover:text-neon transition-all duration-300">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-primary/60 flex items-center justify-center text-gray-400 hover:bg-neon/20 hover:text-neon transition-all duration-300">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+                <a href="#" class="text-2xl font-display font-extrabold tracking-wider mb-6 md:mb-0">
+                    YORU<span class="text-neon">TOUGE</span>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-x-10 gap-y-4">
+                    <a href="#about" class="text-gray-400 hover:text-neon transition-colors duration-300">About</a>
+                    <a href="#performance" class="text-gray-400 hover:text-neon transition-colors duration-300">Performance</a>
+                    <a href="#customizations" class="text-gray-400 hover:text-neon transition-colors duration-300">Custom Builds</a>
+                    <a href="#contact" class="text-gray-400 hover:text-neon transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-neon transition-colors duration-300">Privacy Policy</a>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>© 2023 YoruTouge Moto. All rights reserved.</p>
+                <p class="mt-2">Kawasaki Ninja H2 is a registered trademark of Kawasaki Heavy Industries, Ltd. YoruTouge Moto is an independent exporter.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar scroll effect
+        const mainNav = document.getElementById('mainNav');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                mainNav.classList.add('bg-primary/90', 'backdrop-blur', 'shadow-lg', 'border-b', 'border-gray-800');
+            } else {
+                mainNav.classList.remove('bg-primary/90', 'backdrop-blur', 'shadow-lg', 'border-b', 'border-gray-800');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add animation classes
+            document.body.classList.add('animate-fade-in');
+
+            // Initialize slider
+            updateSlider();
+        });
+
+        // Slider functionality
+        const sliderTrack = document.getElementById('sliderTrack');
+        const prevButton = document.getElementById('prevSlide');
+        const nextButton = document.getElementById('nextSlide');
+        const indicators = document.querySelectorAll('#sliderIndicators button');
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function updateSlider() {
+            // Determine slide width based on viewport
+            let slideWidth = 100; // Default to 100% for mobile
+            if (window.innerWidth >= 1024) {
+                slideWidth = 25; // 4 slides per view on large screens
+            } else if (window.innerWidth >= 768) {
+                slideWidth = 50; // 2 slides per view on medium screens
+            }
+
+            // Move slider
+            sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('bg-neon', 'opacity-100');
+                    indicator.classList.remove('bg-gray-600', 'opacity-50');
+                } else {
+                    indicator.classList.add('bg-gray-600', 'opacity-50');
+                    indicator.classList.remove('bg-neon', 'opacity-100');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : totalSlides - 1;
+            updateSlider();
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide < totalSlides - 1) ? currentSlide + 1 : 0;
+            updateSlider();
+        });
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                currentSlide = index;
+                updateSlider();
+            });
+        });
+
+        // Update slider on window resize
+        window.addEventListener('resize', updateSlider);
+    </script>
+</body>
+</html>
